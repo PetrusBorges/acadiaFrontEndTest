@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acadia Market</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h3 class="logo">Acadia Market</h3>
+
+        <button class="open-modal-button">
+          <img src="assets/icons/shopping-bag.svg" alt="Shopping bag" />
+        </button>
+
+        <div class="modal-shopping-bag">
+          <div class="modal-shopping-bag-header">
+            <p>Shopping Bag (<span class="cart-count-modal">0</span>)</p>
+            <button type="button" class="close-modal-button">
+              <img src="assets/icons/x.svg" alt="Close modal" />
+            </button>
+          </div>
+
+          <div class="modal-shopping-bag-body">
+            <p class="empty-cart">No items in cart</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="search-products-container-wrapper">
+        <div class="search-products-container">
+          <img src="assets/icons/search.svg" alt="" aria-hidden="true" />
+          <input
+            type="text"
+            class="search-products-input"
+            placeholder="Search products"
+          />
+        </div>
+
+        <button class="add-sample-button">Add Sample Product</button>
+      </div>
+
+      <main class="product-grid">
+        <article class="card">
+          <div class="card-image">
+            <img
+              src="assets/products/product-1.webp"
+              alt="Wireless Headphones"
+            />
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">Wireless Headphones</h2>
+            <p class="card-description">
+              High-quality wireless headphones with noise cancellation.
+            </p>
+            <div class="card-content-price">
+              <span class="card-price">$89.99</span>
+              <button type="button" class="primary-button">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image">
+            <img src="assets/products/product-2.webp" alt="Smart Watch" />
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">Smart Watch</h2>
+            <p class="card-description">
+              Track your fitness and notifications with this modern smartwatch.
+            </p>
+            <div class="card-content-price">
+              <span class="card-price">$129.99</span>
+              <button type="button" class="primary-button">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image">
+            <img src="assets/products/product-3.webp" alt="Gaming Mouse" />
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">Gaming Mouse</h2>
+            <p class="card-description">
+              Ergonomic design with customizable RGB lighting.
+            </p>
+            <div class="card-content-price">
+              <span class="card-price">$49.99</span>
+              <button type="button" class="primary-button">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <script src="scripts/incrementDecrementCardButton.js"></script>
+    <script src="scripts/searchProductsInput.js"></script>
+    <script src="scripts/handleOpenCloseModal.js"></script>
+    <script src="scripts/addSampleProduct.js"></script>
+  </body>
+</html>
