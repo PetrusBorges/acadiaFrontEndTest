@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!button) return;
 
     const card = button.closest(".card");
+    const id = card.dataset.id;
     const title = card.querySelector(".card-title").textContent;
     const price = card.querySelector(".card-price").textContent;
 
@@ -19,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isAdded) {
       button.textContent = "Added";
       cartCount++;
-      addItemToModal(title, price);
+      addItemToModal(id, title, price);
     } else {
       button.textContent = "Add to Cart";
       cartCount--;
-      removeItemFromModal(title);
+      removeItemFromModal(id);
     }
 
     updateCartCount();
@@ -35,30 +36,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!removeButton) return;
 
     const cartItem = removeButton.closest(".cart-item");
-    const title = cartItem.dataset.title;
+    const id = cartItem.dataset.id;
 
-    removeItemFromModal(title);
+    removeItemFromModal(id);
 
-    const cards = document.querySelectorAll(".card");
+    const card = document.querySelector(`.card[data-id="${id}"]`);
 
-    cards.forEach((card) => {
-      const cardTitle = card.querySelector(".card-title").textContent;
-
-      if (cardTitle === title) {
-        card.classList.remove("added");
-        card.querySelector(".primary-button").textContent = "Add to Cart";
-      }
-    });
+    if (card) {
+      card.classList.remove("added");
+      card.querySelector(".primary-button").textContent = "Add to Cart";
+    }
 
     cartCount--;
     updateCartCount();
     toggleEmptyMessage();
   });
 
-  const addItemToModal = (title, price) => {
+  const addItemToModal = (id, title, price) => {
     const item = document.createElement("div");
     item.classList.add("cart-item");
-    item.dataset.title = title;
+    item.dataset.id = id;
 
     item.innerHTML = `
       <div class="cart-item-header">
@@ -73,8 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBody.appendChild(item);
   };
 
-  const removeItemFromModal = (title) => {
-    const item = modalBody.querySelector(`[data-title="${title}"]`);
+  const removeItemFromModal = (id) => {
+    const item = modalBody.querySelector(`[data-id="${id}"]`);
 
     if (item) {
       item.remove();
