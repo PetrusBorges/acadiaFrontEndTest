@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartCountModal = document.querySelector(".cart-count-modal");
   const modalBody = document.querySelector(".modal-shopping-bag-body");
   const openModalButton = document.querySelector(".open-modal-button");
-  const cards = document.querySelectorAll(".card");
 
   let cartCount = 0;
 
@@ -33,13 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   modalBody.addEventListener("click", (e) => {
     const removeButton = e.target.closest(".icon-button");
-
     if (!removeButton) return;
 
     const cartItem = removeButton.closest(".cart-item");
     const title = cartItem.dataset.title;
 
     removeItemFromModal(title);
+
+    const cards = document.querySelectorAll(".card");
 
     cards.forEach((card) => {
       const cardTitle = card.querySelector(".card-title").textContent;
